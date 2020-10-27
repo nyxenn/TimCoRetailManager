@@ -15,8 +15,8 @@ namespace TRMDataManager.Controllers
         public IEnumerable<string> Get()
         {
             string userId = RequestContext.Principal.Identity.GetUserId();
-            string userName = RequestContext.Principal.Identity.GetUserName();
-            return new string[] { "value1", userId, userName };
+            string username = RequestContext.Principal.Identity.GetUserName();
+            return new string[] { "value1", userId, username };
         }
 
         // GET api/values/5
