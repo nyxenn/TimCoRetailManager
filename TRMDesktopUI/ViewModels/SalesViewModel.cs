@@ -47,7 +47,8 @@ namespace TRMDesktopUI.ViewModels
         public ProductModel SelectedProduct
         {
             get { return _selectedProduct; }
-            set {
+            set
+            {
                 _selectedProduct = value;
                 NotifyOfPropertyChange(() => SelectedProduct);
                 NotifyOfPropertyChange(() => CanAddToCart);
@@ -60,7 +61,8 @@ namespace TRMDesktopUI.ViewModels
         public int ItemQuantity
         {
             get { return _itemQuantity; }
-            set {
+            set
+            {
                 _itemQuantity = value;
                 NotifyOfPropertyChange(() => ItemQuantity);
                 NotifyOfPropertyChange(() => CanAddToCart);
@@ -72,7 +74,8 @@ namespace TRMDesktopUI.ViewModels
         public BindingList<CartItemModel> Cart
         {
             get { return _cart; }
-            set {
+            set
+            {
                 _cart = value;
                 NotifyOfPropertyChange(() => Cart);
             }
@@ -83,35 +86,68 @@ namespace TRMDesktopUI.ViewModels
         public CartItemModel SelectedCartProduct
         {
             get { return _selectedCartProduct; }
-            set {
+            set
+            {
                 _selectedCartProduct = value;
                 NotifyOfPropertyChange(() => CanRemoveFromCart);
             }
         }
 
+        private string _subtotal = $"{0:C2}";
 
         public string Subtotal
         {
-            get {
-                decimal subtotal = 0;
-
-                foreach (var item in Cart)
-                {
-                    subtotal += item.Product.RetailPrice * item.QuantityInCart;
-                }
-
-                return $"{subtotal:C2}";
+            get { return _subtotal; }
+            set
+            {
+                _subtotal = value;
+                NotifyOfPropertyChange(() => Subtotal);
             }
         }
+
+        private string _tax = $"{0:C2}";
+
         public string Tax
         {
-            get { return $"{0:C2}"; }
-        }
-        public string Total
-        {
-            get { return $"{0:C2}"; }
+            get { return _tax; }
+            set
+            {
+                _tax = value;
+                NotifyOfPropertyChange(() => Tax);
+            }
         }
 
+        private string _total = $"{0:C2}";
+
+        public string Total
+        {
+            get { return _total; }
+            set
+            {
+                _total = value;
+                NotifyOfPropertyChange(() => Total);
+            }
+        }
+
+        public void CalculateTotals()
+        {
+            decimal subtotal = 0;
+            decimal taxAmount = 0;
+            decimal total = 0;
+
+            foreach (var item in Cart)
+            {
+                subtotal += item.Product.RetailPrice * item.QuantityInCart;
+                taxAmount += item.Product.RetailPrice * (item.Product.TaxRate / 100) * item.QuantityInCart;
+            }
+
+            total = subtotal - taxAmount;
+
+            Subtotal = $"{subtotal:C2}";
+            Tax = $"{taxAmount:C2}";
+            Total = $"{total:C2}";
+            
+        }
 
 
         public bool CanAddToCart
@@ -138,8 +174,9 @@ namespace TRMDesktopUI.ViewModels
             {
                 existingItem.QuantityInCart += ItemQuantity;
                 //HACK - There should be a better way of refreshing the cart display
+                int cartIndex = Cart.IndexOf(existingItem);
                 Cart.Remove(existingItem);
-                Cart.Add(existingItem);
+                Cart.Insert(cartIndex, existingItem);
             }
             else
             {
@@ -154,7 +191,8 @@ namespace TRMDesktopUI.ViewModels
             
             SelectedProduct.QuantityInStock -= ItemQuantity;
             ItemQuantity = 1;
-            NotifyOfPropertyChange(() => Subtotal);
+            
+            CalculateTotals();
         }
         
         public bool CanRemoveFromCart

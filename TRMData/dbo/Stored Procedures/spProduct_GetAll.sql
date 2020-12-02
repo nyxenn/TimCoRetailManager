@@ -3,7 +3,8 @@ AS
 BEGIN
 	SET nocount on;
 
-	SELECT Id, ProductName, [Description], RetailPrice, QuantityInStock
-	FROM dbo.Product
+	SELECT Product.Id, Product.ProductName, Product.[Description], Product.RetailPrice, Product.QuantityInStock, Tax.TaxRate
+	FROM Product, Tax
+	WHERE Product.TaxCategoryId=Tax.Id
 	ORDER BY ProductName
 END

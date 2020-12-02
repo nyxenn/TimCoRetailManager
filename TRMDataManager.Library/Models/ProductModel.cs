@@ -12,5 +12,6 @@ namespace TRMDataManager.Models
         public string Description { get; set; }
         public decimal RetailPrice { get; set; }
         public int QuantityInStock { get; set; }
+        public decimal TaxRate { get; set; }
     }
 }

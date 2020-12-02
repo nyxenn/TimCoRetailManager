@@ -14,4 +14,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ProductId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5ef152e8-1f8a-4143-9cd1-86680b2f0d9c" ChangeDateTime="12/02/2020 14:34:20">
+    <Property Name="ElementName" Value="[dbo].[Product].[IsTaxable]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxRate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3fc36740-e794-48f0-ba2a-4b57b158b5c4" ChangeDateTime="12/02/2020 14:58:22">
+    <Property Name="ElementName" Value="[dbo].[Tax].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tax]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6766972c-2e14-434d-8c33-b3056032a539" ChangeDateTime="12/02/2020 14:59:37">
+    <Property Name="ElementName" Value="[dbo].[Tax].[Category]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tax]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="36018ae1-8144-4109-93d8-af248d674486" ChangeDateTime="12/02/2020 15:00:32">
+    <Property Name="ElementName" Value="[dbo].[Product].[TaxRate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxCategory" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7f77ef81-dae7-4694-a887-24d46b0e2cd3" ChangeDateTime="12/02/2020 15:03:07">
+    <Property Name="ElementName" Value="[dbo].[Product].[TaxCategory]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxCategoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2ddbaa6c-c530-4ae6-94ee-2ccf4f3bbd06" ChangeDateTime="12/02/2020 15:25:11">
+    <Property Name="ElementName" Value="[dbo].[Tax].[Rate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tax]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxRate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="59855057-1f87-43a8-b07d-3f7cb708de0f" ChangeDateTime="12/02/2020 15:25:15">
+    <Property Name="ElementName" Value="[dbo].[Tax].[Category]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tax]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxCategory" />
+  </Operation>
 </Operations>
