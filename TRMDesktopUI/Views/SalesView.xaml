@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TRMDesktopUI.Views"
              mc:Ignorable="d" Background="White" FontSize="24"
-             d:DesignHeight="550" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="1000">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
@@ -33,7 +33,13 @@
 		<!--Column 0-->
 		<TextBlock Text="Items" Grid.Row="1" Grid.Column="0" />
 		<ListBox x:Name="Products" Grid.Row="2" Grid.Column="0"
-				 MinHeight="150" MinWidth="100"/>
+				 MinHeight="150" MinWidth="100" SelectedItem="{Binding SelectedProduct}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding ProductName}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 
 		<!--Column 1-->
 		<StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Margin="20">
@@ -47,7 +53,13 @@
 		<!--Column 2-->
 		<TextBlock Text="Cart" Grid.Row="1" Grid.Column="2" />
 		<ListBox x:Name="Cart" Grid.Row="2" Grid.Column="2"
-				 MinHeight="150" MinWidth="100"/>
+				 MinHeight="150" MinWidth="100" SelectedItem="{Binding SelectedCartProduct}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding DisplayText}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 
 		<DockPanel Grid.Row="3" Grid.Column="2">
 			<TextBlock Text="Subtotal: " Margin="0 0 10 0" />
