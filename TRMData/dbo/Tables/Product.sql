@@ -7,5 +7,6 @@
     [QuantityInStock] INT NOT NULL DEFAULT 1,
     [CreateDate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
     [LastModified] DATETIME2 NOT NULL DEFAULT getutcdate(), 
-    [TaxCategoryId] INT NOT NULL 
+    [TaxCategoryId] INT NOT NULL, 
+    CONSTRAINT [FK_Product_ToTax] FOREIGN KEY ([TaxCategoryId]) REFERENCES [Tax]([Id]) 
 )
