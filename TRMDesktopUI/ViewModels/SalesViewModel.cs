@@ -44,9 +44,9 @@ namespace TRMDesktopUI.ViewModels
             await LoadProducts();
 
             ItemQuantity = 1;
-            NotifyOfPropertyChange(() => Subtotal);
-            NotifyOfPropertyChange(() => Tax);
-            NotifyOfPropertyChange(() => Total);
+            Subtotal = $"{0:C2}";
+            Tax = $"{0:C2}";
+            Total = $"{0:C2}";
             NotifyOfPropertyChange(() => CanCheckOut);
         }
 
