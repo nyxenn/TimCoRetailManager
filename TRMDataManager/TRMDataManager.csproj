@@ -220,6 +220,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -326,6 +327,10 @@
     <ProjectReference Include="..\TRMDataManager.Library\TRMDataManager.Library.csproj">
       <Project>{C83B4F26-8CB4-4D13-9959-727D7E9EBA12}</Project>
       <Name>TRMDataManager.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TRMDesktopUI.Library\TRMDesktopUI.Library.csproj">
+      <Project>{F25EA6B9-BD49-450D-AD61-14195867CDC6}</Project>
+      <Name>TRMDesktopUI.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
