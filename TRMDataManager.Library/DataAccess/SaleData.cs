@@ -13,6 +13,7 @@ namespace TRMDataManager.Library.DataAccess
         public void SaveSale(SaleModel saleInfo, string cashierId)
         {
             //TODO: Make this SOLID/DRY/Better
+
             // Start filling in sale detail models we will save to database
             List<SaleDetailDbModel> details = new List<SaleDetailDbModel>();
             ProductData products = new ProductData();
