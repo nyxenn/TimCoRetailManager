@@ -9,7 +9,7 @@ using TRMDataManager.Models;
 
 namespace TRMDataManager.Controllers
 {
-    [Authorize (Roles ="Cashier")]
+    [Authorize (Roles = "Cashier")]
     public class ProductController : ApiController
     {
         // GET api/<controller>
