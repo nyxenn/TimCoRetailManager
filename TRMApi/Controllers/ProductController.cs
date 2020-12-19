@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using TRMDataManager.Library.DataAccess;
 using TRMDataManager.Library.Models;
 
-namespace TRMDataManager.Controllers
+namespace TRMApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     [Authorize (Roles = "Cashier")]
-    public class ProductController : ApiController
+    public class ProductController : ControllerBase
     {
-        // GET api/<controller>
         public List<ProductModel> Get()
         {
             ProductData data = new ProductData();
