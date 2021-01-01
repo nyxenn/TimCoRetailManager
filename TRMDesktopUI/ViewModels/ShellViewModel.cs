@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TRMDesktopUI.EventModels;
 using TRMDesktopUI.Library.API;
@@ -24,9 +25,9 @@ namespace TRMDesktopUI.ViewModels
             _apiHelper = apiHelper;
             _user = user;
 
-            _events.Subscribe(this);
+            _events.SubscribeOnPublishedThread(this);
 
-            ActivateItem(IoC.Get<LoginViewModel>());
+            ActivateItemAsync(IoC.Get<LoginViewModel>());
         }
 
         public bool IsLoggedIn
@@ -44,28 +45,28 @@ namespace TRMDesktopUI.ViewModels
             }
         }
 
-        public void Handle(LogOnEvent message)
+        public async Task ExitApplication()
         {
-            ActivateItem(_salesVM);
-            NotifyOfPropertyChange(() => IsLoggedIn);
+            await TryCloseAsync();
         }
 
-        public void ExitApplication()
-        {
-            TryClose();
-        }
-
-        public void LogOut()
+        public async Task LogOut()
         {
             _user.ResetUserModel();
             _apiHelper.LogOffUser();
-            ActivateItem(IoC.Get<LoginViewModel>());
+            await ActivateItemAsync(IoC.Get<LoginViewModel>());
             NotifyOfPropertyChange(() => IsLoggedIn);
         }
 
-        public void UserManagement()
+        public async Task UserManagement()
         {
-            ActivateItem(IoC.Get<UserDisplayViewModel>());
+            await ActivateItemAsync(IoC.Get<UserDisplayViewModel>());
+        }
+
+        public async Task HandleAsync(LogOnEvent message, CancellationToken cancellationToken)
+        {
+            await ActivateItemAsync(_salesVM, cancellationToken);
+            NotifyOfPropertyChange(() => IsLoggedIn);
         }
     }
 }
